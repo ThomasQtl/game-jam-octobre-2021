@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Tilesets/Environment/background.png" type="Texture" id=1]
+[ext_resource path="res://Tilesets/Environment/graveyard.png" type="Texture" id=2]
+[ext_resource path="res://Tilesets/Environment/mountains.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/TileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/demon/demon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Level1.gd" type="Script" id=8]
+[ext_resource path="res://Ressources/rpg_village02__loop.ogg" type="AudioStream" id=9]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="BackGround" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+scale = Vector2( 2, 2 )
+motion_scale = Vector2( 0.005, 0.005 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground/BackGround"]
+margin_left = -191.5
+margin_top = -163.0
+margin_right = 192.5
+margin_bottom = 61.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mountains" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+scale = Vector2( 2, 2 )
+motion_scale = Vector2( 0.04, 0.04 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground/Mountains"]
+margin_left = -351.0
+margin_top = -79.5
+margin_right = 719.0
+margin_bottom = 99.5
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Graveyard" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground/Graveyard"]
+margin_left = -960.0
+margin_top = -60.0
+margin_right = 1498.0
+margin_bottom = 63.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 196558, 0, 65539, 196559, 0, 65539, 196560, 0, 65539, 196561, 0, 65539, 196562, 0, 65539, 196563, 0, 65539, 196564, 0, 65539, 196565, 0, 65539, 196566, 0, 65539, 196567, 0, 65539, 196568, 0, 65539, 196569, 0, 65539, 196570, 0, 65539, 196571, 0, 65539, 196572, 0, 65539, 196573, 0, 65539, 196574, 0, 65539, 196575, 0, 65539, 196576, 0, 65539, 196577, 0, 65539, 196578, 0, 65539, 196579, 0, 65539, 196580, 0, 65539, 196581, 0, 65539, 196582, 0, 65539, 196583, 0, 65539, 196584, 0, 65539, 196585, 0, 65539, 196586, 0, 65539, 196587, 0, 65539, 196588, 0, 65539, 196589, 0, 65539, 196590, 0, 65539, 196591, 0, 65539, 196592, 0, 65539, 196593, 0, 65539, 196594, 0, 65539, 196595, 0, 65539, 196596, 0, 65539, 196597, 0, 65539, 196598, 0, 65539, 196599, 0, 65539, 196600, 0, 65539, 196601, 0, 65539, 196602, 0, 65539, 196603, 0, 65539, 196604, 0, 65539, 196605, 0, 65539, 196606, 0, 65539, 196607, 0, 65539, 131072, 0, 65539, 131073, 0, 65539, 131074, 0, 65539, 131075, 0, 65539, 131076, 0, 65539, 131077, 0, 65539, 131078, 0, 65539, 131079, 0, 65539, 131080, 0, 65539, 131081, 0, 65539, 131082, 0, 65539, 131083, 0, 65539, 131084, 0, 65539, 131085, 0, 65539, 131086, 0, 65539, 131087, 0, 65539, 131088, 0, 65539, 131089, 0, 65539, 131090, 0, 65539, 131091, 0, 65539, 131092, 0, 65539, 131093, 0, 65539, 131094, 0, 65539, 131095, 0, 65539, 131096, 0, 65539, 131097, 0, 65539, 131098, 0, 65539, 131099, 0, 65539, 131100, 0, 65539, 131101, 0, 65539, 131102, 0, 65539, 131103, 0, 65539, 131104, 0, 65539, 131105, 0, 65539, 131106, 0, 65539, 131107, 0, 65539, 131108, 0, 65539, 131109, 0, 65539, 131110, 0, 65539, 131111, 0, 65539, 131112, 0, 65539, 131113, 0, 65539, 131114, 0, 65539, 131115, 0, 65539, 131116, 0, 65539, 131117, 0, 65539, 131118, 0, 65539, 131119, 0, 65539, 131120, 0, 65539, 131121, 0, 65539, 131122, 0, 65539, 131123, 0, 65539, 131124, 0, 65539, 131125, 0, 65539, 131126, 0, 65539, 131127, 0, 65539, 131128, 0, 65539, 131129, 0, 65539, 131130, 0, 65539, 131131, 0, 65539, 131132, 0, 65539, 131133, 0, 65539, 131134, 0, 65539, 131135, 0, 65539, 131136, 0, 65539 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( -5, -1 )
+move_speed = 180
+gravity = 700
+jump_speed = 300
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="HUD" instance=ExtResource( 6 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+
+[node name="Origin" parent="." instance=ExtResource( 7 )]
+position = Vector2( 69.4534, -0.722477 )
+
+[connection signal="player_stats_changed" from="Player" to="HUD/GUI" method="_on_Player_player_stats_changed"]

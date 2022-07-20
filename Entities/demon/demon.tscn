@@ -1,0 +1,160 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Entities/demon/Demon.gd" type="Script" id=1]
+[ext_resource path="res://Tilesets/Demon/demon-idle.png" type="Texture" id=2]
+[ext_resource path="res://Tilesets/Demon/demon-attack.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 160, 144 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 160, 144 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 0, 160, 144 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 480, 0, 160, 144 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 640, 0, 160, 144 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 800, 0, 160, 144 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 8.0
+} ]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 240, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 480, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 720, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 960, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 1200, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 1440, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 1680, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 1920, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 2160, 0, 240, 192 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 2400, 0, 240, 192 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 12 ), SubResource( 13 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 8.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=20]
+radius = 30.4694
+height = 21.5017
+
+[sub_resource type="CapsuleShape2D" id=21]
+radius = 23.943
+height = 71.2142
+
+[node name="Origin" type="Node2D"]
+position = Vector2( 93.2644, 48.0901 )
+
+[node name="Demon" type="KinematicBody2D" parent="."]
+scale = Vector2( 0.6, 0.6 )
+script = ExtResource( 1 )
+
+[node name="Idle" type="AnimatedSprite" parent="Demon"]
+position = Vector2( 16.7211, -2.62885 )
+frames = SubResource( 7 )
+animation = "Idle"
+playing = true
+
+[node name="Attack" type="AnimatedSprite" parent="Demon"]
+visible = false
+position = Vector2( -22.0735, -26.278 )
+frames = SubResource( 19 )
+animation = "Attack"
+frame = 8
+playing = true
+
+[node name="Body" type="CollisionShape2D" parent="Demon"]
+visible = false
+position = Vector2( -0.39041, 5.65348 )
+shape = SubResource( 20 )
+
+[node name="Area" type="ColorRect" parent="Demon/Body"]
+margin_left = -26.0
+margin_top = -37.0
+margin_right = 28.0
+margin_bottom = 38.0
+color = Color( 1, 1, 1, 0.513726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackZone" type="Area2D" parent="Demon"]
+visible = false
+position = Vector2( -72.8777, 29.7817 )
+rotation = 1.5708
+
+[node name="Area" type="ColorRect" parent="Demon/AttackZone"]
+margin_left = -23.0
+margin_top = -43.0
+margin_right = 24.0
+margin_bottom = 71.0
+color = Color( 1, 0, 0, 0.603922 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Demon/AttackZone"]
+position = Vector2( -0.233795, 17.8677 )
+shape = SubResource( 21 )
+
+[node name="TimeAttack" type="Timer" parent="Demon"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="animation_finished" from="Demon/Attack" to="Demon" method="_on_Attack_animation_finished"]
+[connection signal="body_entered" from="Demon/AttackZone" to="Demon" method="_on_AttackZone_body_entered"]
+[connection signal="timeout" from="Demon/TimeAttack" to="Demon" method="_on_TimeAttack_timeout"]
